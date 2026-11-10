@@ -63,6 +63,14 @@
   },
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EliasKaslan/dsh-sidecar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EliasKaslan/dsh-sidecar/issues"
+  },
+  "homepage": "https://github.com/EliasKaslan/dsh-sidecar#readme",
   "devDependencies": {
     "@deepseek-ai/cordis": "^4.1.0",
     "@deepseek-ai/dsh-client-ui-primitives": "^0.2.2-rc.1",

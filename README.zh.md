@@ -1,10 +1,13 @@
 # dsh-sidecar · 旁问
 
+[![ci](https://github.com/EliasKaslan/dsh-sidecar/actions/workflows/ci.yml/badge.svg)](https://github.com/EliasKaslan/dsh-sidecar/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-black.svg)](LICENSE)
+
 **就当前 DSH 会话提问，但绝不向主会话写入任何一条消息。**
 
 `dsh-sidecar` 在 DSH Web 客户端里加一个右侧边栏面板。它读取主 agent 正在使用的同一份“模型可见上下文”（系统提示词、对话、工具调用与结果、待办、目标、token 用量），用一次独立的辅助模型调用在侧栏作答。主会话不会被追加消息、不会被改道，也不会被打断。
 
-[English](README.md)
+[English](README.md) · GitHub `EliasKaslan/dsh-sidecar` · GitCode `EliasKaslan/dsh-sidecar`
 
 ![旁问面板](docs/shots/light.png)
 

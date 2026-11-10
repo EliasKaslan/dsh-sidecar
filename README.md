@@ -1,10 +1,13 @@
 # dsh-sidecar · 旁问
 
+[![ci](https://github.com/EliasKaslan/dsh-sidecar/actions/workflows/ci.yml/badge.svg)](https://github.com/EliasKaslan/dsh-sidecar/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-black.svg)](LICENSE)
+
 **Ask questions about the current DeepSeek Harness session — without writing a single message into it.**
 
 `dsh-sidecar` adds a right-sidebar panel to the DSH web client. It reads the same model-visible context the main agent is using (system prompt, transcript, tool calls and results, todos, goal, token usage) and answers in the side panel through one auxiliary model call. The main session is never appended to, never steered, and never interrupted.
 
-[中文说明](README.zh.md)
+[中文说明](README.zh.md) · GitHub `EliasKaslan/dsh-sidecar` · GitCode `EliasKaslan/dsh-sidecar`
 
 ![Sidecar panel](docs/shots/light.png)
 
