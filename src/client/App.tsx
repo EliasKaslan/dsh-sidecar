@@ -499,7 +499,7 @@ export function SidecarApp(props: AppProps): React.ReactElement {
         {thread.items.length === 0 ? (
           <EmptyState t={t} onPick={pickSuggestion} />
         ) : (
-          <div className="dsh-sidecar-thread" role="log" aria-live="polite">
+          <div className="dsh-sidecar-thread" role="log" aria-live="off">
             {thread.items.map((item) => (
               <Turn
                 key={item.id}
@@ -511,6 +511,10 @@ export function SidecarApp(props: AppProps): React.ReactElement {
             ))}
           </div>
         )}
+      </div>
+
+      <div className="dsh-sidecar-sr" aria-live="polite">
+        {busy ? t('thinking') : thread.items.length > 0 ? t('doneAnnounce') : ''}
       </div>
 
       <div className="dsh-sidecar-composer-wrap">
