@@ -71,7 +71,7 @@ pnpm install
         maxContextChars: 96000
 ```
 
-patch 层改动会热重载；页签没出现时刷新页面。改插件自己的 `package.json` 清单需要重启 host。
+patch 层改动会热重载；页签没出现时刷新页面。在桌面端，只改 profile patch 有时不会唤醒重组合 watcher：touch 一下 `~/.dsh/cordis.patch.yml`（追加一个空行）或重启 DSH。改插件自己的 `package.json` 清单需要重启 host。
 
 > `desktop` profile 由 Electron 应用独占，独立 `dsh plugin` CLI 会拒绝它。请用应用内插件管理器，或上面的手工 link。
 

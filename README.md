@@ -71,7 +71,7 @@ pnpm install
         maxContextChars: 96000
 ```
 
-A patch-layer change is hot-reloaded; reload the page if the tab does not appear. A manifest edit (`package.json` of the plugin) needs a host restart.
+A patch-layer change is hot-reloaded; reload the page if the tab does not appear. In the desktop host, a profile-patch edit alone may not wake the recomposition watcher: touch `~/.dsh/cordis.patch.yml` (append a blank line) or restart DSH. A manifest edit (`package.json` of the plugin) needs a host restart.
 
 > The `desktop` profile is managed by the Electron app; the standalone `dsh plugin` CLI refuses it. Use the app's plugin manager or the manual link above.
 
