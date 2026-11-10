@@ -1,0 +1,21 @@
+# dsh-sidecar — plugin row.
+#
+# Bundles load this automatically. For a manual install, append the same row to
+# your profile's cordis.patch.yml (or to ~/.dsh/cordis.patch.yml).
+#
+# `name` must equal the package name exactly.
+- insert:
+    - id: sidecar
+      name: 'dsh-sidecar'
+      config:
+        # Optional explicit route. Omit both to reuse the current session's
+        # last request route, then the agent default model.
+        # provider: huoshan
+        # model: volcengine/deepseek-v4.1-flash
+        maxTokens: 2048
+        # Character budget for the read-only snapshot (not tokens).
+        maxContextChars: 96000
+        # Side-chat turns sent back as history.
+        maxHistoryMessages: 8
+        # "max" is tuned for coding turns; leave unset for a faster side answer.
+        # reasoningEffort: high
