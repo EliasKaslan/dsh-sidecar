@@ -51,29 +51,21 @@ The package declares `dsh.bundle.patch`, so DSH's plugin manager can install it 
 2. Enable `dsh-sidecar`.
 3. The bundle inserts the `sidecar` row automatically.
 
-### Option B — manual link (development)
+### Option B — manual profile bundle (development)
 
 ```powershell
 # 1) put the repository anywhere, e.g. D:\work\dsh-sidecar
-# 2) link it into the profile
 cd $env:USERPROFILE\.dsh\profiles\desktop
-# add to package.json dependencies:
-#   "dsh-sidecar": "link:D:/work/dsh-sidecar"
+# 2) edit package.json:
+#    dependencies."dsh-sidecar" = "link:D:/work/dsh-sidecar"
+#    dsh.profile.bundles       += "dsh-sidecar"
 pnpm install
-
-# 3) append the row to the profile patch
-#    C:\Users\admin\.dsh\profiles\desktop\cordis.patch.yml
-- insert:
-    - id: sidecar
-      name: 'dsh-sidecar'
-      config:
-        maxTokens: 2048
-        maxContextChars: 96000
+# 3) restart DSH, or touch ~/.dsh/cordis.patch.yml to ask HMR to recompose
 ```
 
-A patch-layer change is hot-reloaded; reload the page if the tab does not appear. In the desktop host, a profile-patch edit alone may not wake the recomposition watcher: touch `~/.dsh/cordis.patch.yml` (append a blank line) or restart DSH. A manifest edit (`package.json` of the plugin) needs a host restart.
+The bundle's own `cordis.patch.yml` inserts the `sidecar` row; do not add a second row by hand. That is also why a bare `cordis.patch.yml` row is not enough for the Plugins page: it loads the plugin, but the app lists only profile bundles. A manifest edit (`package.json` of the plugin) needs a host restart; a bundle-selection edit is picked up by HMR or the next restart.
 
-> The `desktop` profile is managed by the Electron app; the standalone `dsh plugin` CLI refuses it. Use the app's plugin manager or the manual link above.
+> The `desktop` profile is managed by the Electron app; the standalone `dsh plugin` CLI refuses it. Use **Add plugin** or the manual profile edit above.
 
 ### Option C — from source
 

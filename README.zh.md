@@ -51,29 +51,21 @@
 2. 启用 `dsh-sidecar`。
 3. bundle 会自动插入 `sidecar` 行。
 
-### 方式 B — 手工 link（开发）
+### 方式 B — 手工 profile bundle（开发）
 
 ```powershell
 # 1) 仓库放在任意位置，例如 D:\work\dsh-sidecar
-# 2) link 进 profile
 cd $env:USERPROFILE\.dsh\profiles\desktop
-# 在 package.json 的 dependencies 里加：
-#   "dsh-sidecar": "link:D:/work/dsh-sidecar"
+# 2) 编辑 package.json：
+#    dependencies."dsh-sidecar" = "link:D:/work/dsh-sidecar"
+#    dsh.profile.bundles       += "dsh-sidecar"
 pnpm install
-
-# 3) 把下面这段追加到 profile 的 cordis.patch.yml
-#    C:\Users\admin\.dsh\profiles\desktop\cordis.patch.yml
-- insert:
-    - id: sidecar
-      name: 'dsh-sidecar'
-      config:
-        maxTokens: 2048
-        maxContextChars: 96000
+# 3) 重启 DSH，或 touch 一下 ~/.dsh/cordis.patch.yml 让 HMR 重组合
 ```
 
-patch 层改动会热重载；页签没出现时刷新页面。在桌面端，只改 profile patch 有时不会唤醒重组合 watcher：touch 一下 `~/.dsh/cordis.patch.yml`（追加一个空行）或重启 DSH。改插件自己的 `package.json` 清单需要重启 host。
+bundle 自带的 `cordis.patch.yml` 会插入 `sidecar` 行，不要再手工加第二行。这也解释了为什么**只写一行 `cordis.patch.yml` 不会出现在「插件」页**：它能加载插件，但应用只把 profile bundle 列为插件。改插件自己的 `package.json` 清单需要重启 host；改 bundle 选择由 HMR 或下次重启生效。
 
-> `desktop` profile 由 Electron 应用独占，独立 `dsh plugin` CLI 会拒绝它。请用应用内插件管理器，或上面的手工 link。
+> `desktop` profile 由 Electron 应用独占，独立 `dsh plugin` CLI 会拒绝它。请用应用内 **Add plugin**，或上面的手工 profile 编辑。
 
 ### 方式 C — 从源码
 
