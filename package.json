@@ -22,6 +22,7 @@
     "lib",
     "locale/*.json",
     "icon.svg",
+    "docs",
     "cordis.patch.yml",
     "README.md",
     "README.zh.md",
