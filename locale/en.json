@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Sidecar",
+    "description": "A read-only right-sidebar panel: ask about the current session without writing to it."
+  }
+}

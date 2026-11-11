@@ -20,12 +20,15 @@
   },
   "files": [
     "lib",
+    "locale/*.json",
+    "icon.svg",
     "cordis.patch.yml",
     "README.md",
     "README.zh.md",
     "LICENSE",
     "THIRD-PARTY-NOTICES.md"
   ],
+  "icon": "./icon.svg",
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
